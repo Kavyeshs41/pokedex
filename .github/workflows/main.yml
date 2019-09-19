@@ -9,7 +9,7 @@ jobs:
     
     steps:
     - name: WHOAMI 
-    - uses: appleboy/ssh-action@master
+      uses: appleboy/ssh-action@master
       env: 
         USERNAME: ${{ secrets.SSH_USER }}
         HOST: ${{ secrets.SSH_HOST }}
