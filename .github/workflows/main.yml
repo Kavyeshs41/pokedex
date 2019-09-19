@@ -14,4 +14,4 @@ jobs:
         USERNAME: ${{ secrets.SSH_USER }}
         HOST: ${{ secrets.SSH_HOST }}
         KEY: ${{ secrets.SSH_PRIV_KEY }}
-        SCRIPT: whoami
+        SCRIPT: whoami && sleep 5
