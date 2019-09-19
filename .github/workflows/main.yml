@@ -1,0 +1,17 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: WHOAMI 
+    - uses: appleboy/ssh-action@master
+      env: 
+        USERNAME: ${{ secrets.SSH_USER }}
+        HOST: ${{ secrets.SSH_HOST }}
+        KEY: ${{ secrets.SSH_PRIV_KEY }}
+        SCRIPT: whoami
