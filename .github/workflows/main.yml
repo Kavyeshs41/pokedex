@@ -23,7 +23,7 @@ jobs:
     - name: zip the archive
       uses: montudor/action-zip@v0.1.0
       with:
-        args: zip -r deployment.zip ./build pre-depoy.sh deploy.sh
+        args: zip -r deployment.zip ./build pre-deploy.sh deploy.sh
     
     - name: copy file via ssh key
       uses: appleboy/scp-action@master
