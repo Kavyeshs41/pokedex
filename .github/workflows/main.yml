@@ -21,4 +21,5 @@ jobs:
  
     - name: zip the archive
       uses: montudor/action-zip@v0.1.0
-      args: zip -r deployment.zip ./build
+      with:
+        args: zip -r deployment.zip ./build
