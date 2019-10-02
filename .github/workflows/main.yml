@@ -41,4 +41,4 @@ jobs:
         USERNAME: ${{ secrets.SSH_USER }}
         HOST: ${{ secrets.SSH_HOST }}
         KEY: ${{ secrets.SSH_PRIV_KEY }}
-        SCRIPT: cd .tmp && unzip deployment.zip && bash pre-deploy.sh
+        SCRIPT: cd .tmp && unzip deployment.zip && bash pre-deploy.sh && pwd
