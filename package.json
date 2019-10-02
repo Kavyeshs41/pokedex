@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "private": true,
   "author": "Ali Gasymov <alik0211alik@gmail.com> (https://alik0211.com/)",
-  "homepage": "https://alik0211.github.io/pokedex/",
+  "homepage": ".",
   "dependencies": {
     "hardtack": "4.1.0",
     "react": "16.7.0",
