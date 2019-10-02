@@ -1,17 +1,24 @@
 name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+    - CI-test
 
 jobs:
   build:
+    runs-on: ubuntu-latest  
+    steps: 
+    - name: Use Node.js 10
+      uses: actions/setup-node@v1
+      with:
+        version: 10
 
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: WHOAMI 
-      uses: appleboy/ssh-action@master
-      env: 
-        USERNAME: ${{ secrets.SSH_USER }}
-        HOST: ${{ secrets.SSH_HOST }}
-        KEY: ${{ secrets.SSH_PRIV_KEY }}
-        SCRIPT: whoami && sleep 5
+    - name: npm install, build and test
+      run: |
+        npm install
+        npm run build --if-present
+ 
+    - name: zip the archive
+      uses: montudor/action-zip@v0.1.0
+      args: zip -r deployment.zip ./build
