@@ -23,7 +23,7 @@ jobs:
     - name: zip the archive
       uses: montudor/action-zip@v0.1.0
       with:
-        args: zip -r deployment.zip ./build
+        args: zip -r deployment.zip ./build pre-depoy.sh deploy.sh
     
     - name: copy file via ssh key
       uses: appleboy/scp-action@master
@@ -32,7 +32,7 @@ jobs:
         HOST: ${{ secrets.SSH_HOST }}
         KEY: ${{ secrets.SSH_PRIV_KEY }}
       with:
-        source: "deployment.zip,pre-deploy.sh,deploy.sh"
+        source: "deployment.zip"
         target: ".tmp"
     
     - name: Deploy to Server
@@ -41,4 +41,4 @@ jobs:
         USERNAME: ${{ secrets.SSH_USER }}
         HOST: ${{ secrets.SSH_HOST }}
         KEY: ${{ secrets.SSH_PRIV_KEY }}
-        SCRIPT: cd .tmp && bash pre-deploy.sh
+        SCRIPT: cd .tmp && unzip deployment.zip && bash pre-deploy.sh
