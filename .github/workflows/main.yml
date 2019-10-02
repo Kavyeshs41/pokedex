@@ -23,7 +23,7 @@ jobs:
     - name: zip the archive
       uses: montudor/action-zip@v0.1.0
       with:
-        args: zip -r deployment.zip ./build pre-deploy.sh deploy.sh
+        args: zip -r deployment.zip ./build deploy.sh
     
     - name: copy file via ssh key
       uses: appleboy/scp-action@master
@@ -41,4 +41,8 @@ jobs:
         USERNAME: ${{ secrets.SSH_USER }}
         HOST: ${{ secrets.SSH_HOST }}
         KEY: ${{ secrets.SSH_PRIV_KEY }}
-        SCRIPT: cd .tmp && unzip deployment.zip && bash pre-deploy.sh && pwd
+        SCRIPT: | 
+          mkdir -p .tmp/$$
+          mv .tmp/deployment.zip .tmp/$$/deployment.zip
+          unzip -o .tmp/$$/deployment.zip -d .tmp/$$/
+          cd .tmp/$$/ && bash deploy.sh pokedex
