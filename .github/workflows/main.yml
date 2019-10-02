@@ -31,4 +31,4 @@ jobs:
         USERNAME: ${{ secrets.SSH_USER }}
         HOST: ${{ secrets.SSH_HOST }}
         KEY: ${{ secrets.SSH_PRIV_KEY }}
-        SCRIPT: pre-deploy.sh
+        SCRIPT: bash -s pre-deploy.sh
