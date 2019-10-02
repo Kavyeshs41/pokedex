@@ -24,3 +24,11 @@ jobs:
       uses: montudor/action-zip@v0.1.0
       with:
         args: zip -r deployment.zip ./build
+    
+    - name: Deploy to Server
+      uses: appleboy/ssh-action@master
+      env: 
+        USERNAME: ${{ secrets.SSH_USER }}
+        HOST: ${{ secrets.SSH_HOST }}
+        KEY: ${{ secrets.SSH_PRIV_KEY }}
+        SCRIPT: pre-deploy.sh
